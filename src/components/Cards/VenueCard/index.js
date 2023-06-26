@@ -1,14 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 
 import { vh, vw } from "../../../utils/dimensions";
 import styles from "./styles";
 
-const VenueCard = ({ name }) => {
+const VenueCard = ({ name, image }) => {
   return (
-    <View style={styles.container}>
+    <ImageBackground style={styles.container} imageStyle={styles.image} source={{ uri: image }}>
       <Text style={styles.name}>{name}</Text>
-    </View>
+    </ImageBackground>
   );
 };
 

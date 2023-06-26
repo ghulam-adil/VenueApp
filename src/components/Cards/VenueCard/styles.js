@@ -8,14 +8,16 @@ const styles = StyleSheet.create({
     fontSize: vh * 2.4,
   },
   container: {
-    backgroundColor: "orange",
+    // backgroundColor: "black",
     height: vh * 20,
     width: vw * 80,
     marginVertical: vh * 2,
     marginHorizontal: vw * 4,
-    borderRadius: vh * 2,
     padding: vh * 2,
   },
+  image: {
+    borderRadius: vh * 3,
+  }
 });
 
 export default styles;
