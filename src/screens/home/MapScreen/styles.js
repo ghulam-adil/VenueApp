@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
     width: vh * 5,
     borderRadius: (vh * 5) / 2,
   },
+  name: {
+    fontSize: vh * 3,
+  },
 });
 
 export default styles;

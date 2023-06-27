@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Image, LayoutAnimation, View } from "react-native";
+import { Image, LayoutAnimation, Text, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { StatusBar } from "expo-status-bar";
 import Carousel from "react-native-snap-carousel";
@@ -48,14 +48,7 @@ const MapScreen = () => {
           longitude: marker.lon,
         }}
         title={marker.name}
-      >
-        <View style={{ alignItems: "center" }}>
-          <Image
-            source={{ uri: marker?.featured_image }}
-            style={styles.marker}
-          />
-        </View>
-      </Marker>
+      />
     ));
   };
 
