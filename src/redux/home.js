@@ -23,15 +23,10 @@ export const homeSlice = createSlice({
       state.user = action.payload;
     },
   },
-  //   extraReducers: {
-  //     [Login.fulfilled]: (state, action) => {
-  //       const {payload} = action;
-  //       state.token = payload;
-  //     },
-  //     [Logout.fulfilled]: state => {
-  //       state.token = null;
-  //     },
-  //   },
+  extraReducers: (builder) => {
+    builder.addCase(GetVenues.fulfilled, (state, action) => {
+      state.venues = action.payload.results;
+    });
+  },
 });
-export const { setUser } = homeSlice.actions;
 export default homeSlice.reducer;

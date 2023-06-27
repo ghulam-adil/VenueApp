@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { LayoutAnimation, View } from "react-native";
+import { Image, LayoutAnimation, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import { StatusBar } from "expo-status-bar";
 import Carousel from "react-native-snap-carousel";
@@ -8,21 +8,17 @@ import useHome from "../../../hooks/useHome";
 import { vh, vw } from "../../../utils/dimensions";
 import VenueCard from "../../../components/Cards/VenueCard";
 import styles from "./styles";
+import { useSelector } from "react-redux";
 
 const MapScreen = () => {
-  const [venues, setVenues] = useState([]);
   const [index, setIndex] = useState(0);
   const isCarousel = useRef(null);
   const { getVenues } = useHome();
+  const venues = useSelector((state) => state.home.venues);
 
   const getVenuesHandler = async () => {
     try {
       const response = await getVenues();
-      console.log(
-        "getVenues RESPONSE ON SCREEN======>>>>>>>>>>>",
-        response.results
-      );
-      setVenues(response.results);
     } catch (error) {
       // showToast(error);
     }
@@ -52,14 +48,23 @@ const MapScreen = () => {
           longitude: marker.lon,
         }}
         title={marker.name}
-      />
+      >
+        <View style={{ alignItems: "center" }}>
+          <Image
+            source={{ uri: marker?.featured_image }}
+            style={styles.marker}
+          />
+        </View>
+      </Marker>
     ));
   };
 
   const handleChange = (index) => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
     setIndex(index);
-    mapRef.current.fitToSuppliedMarkers([venues[index].name]);
+    setTimeout(() => {
+      mapRef.current.fitToSuppliedMarkers([venues[index].name]);
+    }, 500);
   };
 
   return (

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { vw } from "../../../utils/dimensions";
+import { vh, vw } from "../../../utils/dimensions";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
     width: vw * 100,
     bottom: 0,
     position: "absolute",
+  },
+  marker: {
+    height: vh * 5,
+    width: vh * 5,
+    borderRadius: (vh * 5) / 2,
   },
 });
 
